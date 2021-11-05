@@ -1,0 +1,37 @@
+.segment {
+  border: 1px solid rgb(126, 126, 126);
+  border-radius: 4px;
+  padding: 8px 20px 20px;
+  margin: 8px 0 40px;
+}
+
+.segment-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.segment > hr {
+  border: 0.5px solid rgb(126, 126, 126);
+  margin: 10px 0 20px;
+}
+
+/* .segment-head-title {
+} */
+
+.segment-head-button {
+  background-color: rgb(255, 255, 255);
+  color: rgb(5, 204, 155);
+  width: 60px;
+  padding: 6px 8px;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+.segment-content {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}

@@ -1,9 +1,16 @@
 import React from "react";
+import CollectibleInfoPage from "../pages/CollectibleInfoPage";
+import CollectiblesListPage from "../pages/CollectiblesListPage";
+import HomePage from "../pages/HomePage";
 
-class App extends React.Component {
-  render() {
-    return <div>NFT Market</div>;
-  }
-}
+const App = () => {
+  return (
+    <div>
+      {/* <HomePage /> */}
+      {/* <CollectiblesListPage /> */}
+      <CollectibleInfoPage />
+    </div>
+  );
+};
 
 export default App;

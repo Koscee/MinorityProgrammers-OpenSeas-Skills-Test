@@ -1,0 +1,151 @@
+.info-container {
+  display: flex;
+  flex-wrap: wrap;
+  /* justify-content: space-between; */
+  /* border: 1px solid #000; */
+}
+
+/* .info-container > div {
+  border: 1px solid #000;
+} */
+
+.info-left-img-box,
+.info-right-box > div:not(.bidding-form-box) {
+  border: 1px solid rgb(126, 126, 126);
+  padding: 4px;
+}
+
+.info-left-box {
+  min-width: 280px;
+  flex-grow: 1;
+}
+
+.info-left-img-box,
+.info-left-img-box img {
+  height: 250px;
+  width: 270px;
+}
+
+.info-left-img-box {
+  padding: 3px;
+  margin: 8px 0;
+}
+
+.info-left-img-box img {
+  border-radius: 8px;
+}
+
+.tag-container,
+.edition-box {
+  display: flex;
+  font-size: 13px;
+}
+
+.tag-text,
+.edition-text {
+  margin-right: 2px;
+}
+
+.tag-list .tag-item {
+  display: inline-block;
+  margin: 0 2px;
+  width: 50px;
+  padding: 2px 4px;
+  text-align: center;
+  border: 1px solid grey;
+  font-size: 12px;
+}
+
+.info-right-box > div:where(.bidding-form-box) {
+  margin: 10px 0;
+}
+
+.info-right-box {
+  min-width: 350px;
+  flex-grow: 1;
+  align-self: center;
+}
+
+.bidding-info {
+  display: flex;
+  /* justify-content: space-between; */
+}
+
+.bidding-info-left {
+  flex-grow: 1;
+  text-align: left;
+}
+
+.bidding-info-right {
+  flex-grow: 2;
+  align-self: flex-end;
+  text-align: right;
+}
+
+.bidding-info-right .bid-end-date {
+  font-size: 25px;
+  font-weight: 800;
+}
+
+.bidding-form {
+  display: flex;
+  height: 30px;
+}
+
+.bid-price-input {
+  /* padding-left: 20%; */
+  flex-grow: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  border: 1px solid rgb(126, 126, 126);
+}
+
+.bid-price-input input {
+  border: none;
+  height: 26px;
+  width: 30%;
+  text-align: left;
+  margin-right: 8px;
+  background-color: transparent;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.bidding-form button {
+  flex-grow: 0.4;
+  margin-left: 10px;
+}
+
+.collectible-desc-details {
+  padding: 10px 20px 5px 8px;
+}
+
+.description-box,
+.details-box {
+  margin: 8px 0;
+}
+
+.collectible-desc-details p {
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.heading-text {
+  margin-bottom: 5px;
+}
+
+.detail-item {
+  display: flex;
+  justify-content: space-between;
+}
