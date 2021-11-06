@@ -1,11 +1,39 @@
 import React, { Component } from "react";
+import { getTopCollections } from "../api/actions/collectionActions";
 import Header from "../components/Header/Header";
 import Banner from "../components/Banner/Banner";
 import SegmentWrapper from "../components/Segment/SegmentWrapper";
 import SegmentHead from "../components/Segment/SegmentHead";
 import { HorizontalCard, VerticalCard } from "../components/Card/Card";
+import CollectibleInfoPage from "./CollectibleInfoPage";
 
 export default class HomePage extends Component {
+  state = { collectibles: [], topCollectionsData: [] };
+
+  async componentDidMount() {
+    const topCollections = await getTopCollections();
+    this.setState({ topCollectionsData: topCollections });
+    console.log("fetched top collections", this.state.topCollectionsData);
+  }
+
+  renderTopCollectionsCards = () => {
+    return this.state.topCollectionsData.length === 0
+      ? "Loading..."
+      : this.state.topCollectionsData.map((collection) => {
+          return (
+            <HorizontalCard
+              key={collection.slug}
+              name={collection.name}
+              avatarImage={collection.image_url}
+              footerLTitle="Floor Price"
+              footerLValue={collection.floor_price.toFixed(2)}
+              footerRTitle="Volume"
+              footerRValue={collection.total_volume.toFixed(2)}
+            />
+          );
+        });
+  };
+
   render() {
     return (
       <div>
@@ -19,9 +47,7 @@ export default class HomePage extends Component {
             <SegmentHead title="Top Collections" />
             <hr />
             <div className="segment-content">
-              <HorizontalCard />
-              <HorizontalCard />
-              <HorizontalCard />
+              {this.renderTopCollectionsCards()}
             </div>
           </SegmentWrapper>
 

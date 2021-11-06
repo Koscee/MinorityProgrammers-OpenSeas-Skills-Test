@@ -6,7 +6,7 @@
   border-radius: 10px;
   /*   height: 100px; */
   min-width: 350px;
-  /*   flex-grow: 1; */
+  /* flex-grow: 0.5; */
 }
 
 .horizontal-card-avatar-box {

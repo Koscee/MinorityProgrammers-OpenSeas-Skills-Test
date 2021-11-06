@@ -1,8 +1,9 @@
 .segment {
+  min-width: 350px;
   border: 1px solid rgb(126, 126, 126);
   border-radius: 4px;
   padding: 8px 20px 20px;
-  margin: 8px 0 40px;
+  margin: 8px 0;
 }
 
 .segment-head {
