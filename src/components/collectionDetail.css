@@ -1,7 +1,7 @@
 .info-container {
   display: flex;
   flex-wrap: wrap;
-  /* justify-content: space-between; */
+  justify-content: space-between;
   /* border: 1px solid #000; */
 }
 
@@ -18,6 +18,7 @@
 .info-left-box {
   min-width: 280px;
   flex-grow: 1;
+  margin-bottom: 30px;
 }
 
 .info-left-img-box,
@@ -61,7 +62,8 @@
 }
 
 .info-right-box {
-  min-width: 350px;
+  max-width: 50%;
+  min-width: 450px;
   flex-grow: 1;
   align-self: center;
 }

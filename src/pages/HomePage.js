@@ -1,38 +1,26 @@
 import React, { Component } from "react";
 import { getTopCollections } from "../api/actions/collectionActions";
+import { getCollectibles } from "../api/actions/collectibleActions";
 import Header from "../components/Header/Header";
 import Banner from "../components/Banner/Banner";
-import SegmentWrapper from "../components/Segment/SegmentWrapper";
-import SegmentHead from "../components/Segment/SegmentHead";
-import { HorizontalCard, VerticalCard } from "../components/Card/Card";
-import CollectibleInfoPage from "./CollectibleInfoPage";
+import CollectibleList from "../components/CollectibleList";
+import TopCollections from "../components/TopCollections";
 
 export default class HomePage extends Component {
   state = { collectibles: [], topCollectionsData: [] };
 
   async componentDidMount() {
     const topCollections = await getTopCollections();
-    this.setState({ topCollectionsData: topCollections });
     console.log("fetched top collections", this.state.topCollectionsData);
-  }
 
-  renderTopCollectionsCards = () => {
-    return this.state.topCollectionsData.length === 0
-      ? "Loading..."
-      : this.state.topCollectionsData.map((collection) => {
-          return (
-            <HorizontalCard
-              key={collection.slug}
-              name={collection.name}
-              avatarImage={collection.image_url}
-              footerLTitle="Floor Price"
-              footerLValue={collection.floor_price.toFixed(2)}
-              footerRTitle="Volume"
-              footerRValue={collection.total_volume.toFixed(2)}
-            />
-          );
-        });
-  };
+    const listOfCollectibles = await getCollectibles();
+    console.log("fetched list of collectibles", listOfCollectibles);
+
+    this.setState({
+      collectibles: listOfCollectibles,
+      topCollectionsData: topCollections,
+    });
+  }
 
   render() {
     return (
@@ -41,28 +29,11 @@ export default class HomePage extends Component {
         <Banner
           title="Collectibles"
           description="Verified NFT marketplace for music artists."
+          bkgImage="images/banner.jpg"
         />
         <main>
-          <SegmentWrapper>
-            <SegmentHead title="Top Collections" />
-            <hr />
-            <div className="segment-content">
-              {this.renderTopCollectionsCards()}
-            </div>
-          </SegmentWrapper>
-
-          <SegmentWrapper>
-            <SegmentHead title="Collectibles" />
-            <hr />
-            <div className="segment-content">
-              <VerticalCard />
-              <VerticalCard />
-              <VerticalCard />
-              <VerticalCard />
-              <VerticalCard />
-              <VerticalCard />
-            </div>
-          </SegmentWrapper>
+          <TopCollections topCollections={this.state.topCollectionsData} />
+          <CollectibleList collectibles={this.state.collectibles} />
         </main>
       </div>
     );

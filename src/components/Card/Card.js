@@ -38,6 +38,7 @@ export class VerticalCard extends Component {
   render() {
     const {
       name,
+      author,
       avatarImage,
       price,
       footerLTitle,
@@ -47,18 +48,18 @@ export class VerticalCard extends Component {
     } = this.props;
     return (
       <div className="vertical-card-container">
-        <SquareAvatar image={avatarImage} alt={name} price={price || "$500"} />
+        <SquareAvatar image={avatarImage} alt={name} price={price || "N/A"} />
         <CardContent cardType="vertical">
           <div className="vertical-card-title-box">
-            <h3 className="vertical-card-title">Shiny Rappers</h3>
-            <p className="author">by Tyga</p>
+            <h3 className="vertical-card-title">{name}</h3>
+            <p className="author">by {author}</p>
           </div>
           <hr />
           <CardFooter
             cardType="vertical"
-            leftTitle={footerLTitle || "Drops in"}
+            leftTitle={footerLTitle}
             leftValue={footerLValue}
-            rightTitle={footerRTitle || "Mint Amount"}
+            rightTitle={footerRTitle}
             rightValue={footerRValue}
           />
         </CardContent>

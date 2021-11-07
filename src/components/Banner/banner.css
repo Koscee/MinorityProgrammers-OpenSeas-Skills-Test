@@ -1,19 +1,29 @@
 .banner {
   /* border: 1px solid rgb(255, 255, 255); */
   /* position: relative; */
-  height: 280px;
+  height: 350px;
   width: 100%;
   /* background-image: url("images/banner.jpg"); */
   background-repeat: no-repeat;
   background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.banner-content-wrapper {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .banner-content {
   /* position: absolute;
   bottom: 10px;
   left: 25px; */
-  width: fit-content;
-  transform: translate(25px, calc(280px - 100px));
+  width: 80%;
+  text-align: left;
+  padding: 20px;
+  margin-left: 40px;
 }
 
 .banner-content > * {

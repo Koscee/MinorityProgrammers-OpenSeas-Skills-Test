@@ -4,9 +4,10 @@
 } */
 
 .vertical-card-container {
+  width: 250px;
   border: 1px solid rgb(126, 126, 126);
   padding-bottom: 10px;
-  margin: 20px 8px;
+  margin: 20px 10px;
   /*   height: 100px; */
   /*   min-width: 320px; */
 }
@@ -15,13 +16,12 @@
 .vertical-card-avatar-box,
 .vertical-card-avatar-box img {
   border-radius: 14px;
-  width: 195px;
 }
 
 .vertical-card-avatar-box,
 .vertical-card-avatar-box img {
-  height: 122px;
-  width: 197px;
+  height: 140px;
+  width: 252px;
 }
 
 .vertical-card-avatar-box {

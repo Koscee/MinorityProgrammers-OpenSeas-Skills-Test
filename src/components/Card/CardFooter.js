@@ -8,11 +8,11 @@ class CardFooter extends Component {
       <div className={`${cardType}-card-footer-container`}>
         <div className="footer-left">
           <p>{leftTitle}</p>
-          <span className="footer-left-value">${leftValue}</span>
+          <span className="footer-left-value">{leftValue}</span>
         </div>
         <div className="footer-right">
           <p>{rightTitle}</p>
-          <span className="footer-right-value">${rightValue}</span>
+          <span className="footer-right-value">{rightValue}</span>
         </div>
       </div>
     );

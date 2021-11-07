@@ -8,11 +8,13 @@ class Banner extends React.Component {
     return (
       <div
         className="banner"
-        style={{ backgroundImage: 'url("images/banner.jpg")' }}
+        style={{ backgroundImage: `url(${this.props.bkgImage})` }}
       >
-        <div className="banner-content">
-          <h1>{this.props.title}</h1>
-          <p>{this.props.description}</p>
+        <div className="banner-content-wrapper">
+          <div className="banner-content">
+            <h1>{this.props.title}</h1>
+            <p>{this.props.description}</p>
+          </div>
         </div>
       </div>
     );

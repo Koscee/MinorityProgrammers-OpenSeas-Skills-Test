@@ -3,7 +3,7 @@
   border: 1px solid rgb(126, 126, 126);
   border-radius: 4px;
   padding: 8px 20px 20px;
-  margin: 8px 0;
+  margin: 20px 0;
 }
 
 .segment-head {
@@ -32,7 +32,7 @@
 .segment-content {
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-around; */
   flex-wrap: wrap;
   margin-top: 20px;
 }

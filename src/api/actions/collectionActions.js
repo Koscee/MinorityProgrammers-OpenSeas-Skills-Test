@@ -32,4 +32,11 @@ export const getTopCollections = () => {
   return Promise.all(dataList);
 };
 
-export const getCollections = () => {};
+// test function
+export const getCollection = async (collectionSlug) => {
+  const res = await opensea.get(`/collection/${collectionSlug}`);
+
+  const { name, banner_image_url, description } = res.data.collection;
+
+  return { name, banner_image_url, description };
+};
