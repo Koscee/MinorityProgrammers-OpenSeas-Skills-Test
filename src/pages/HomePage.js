@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { getTopCollections } from "../api/actions/collectionActions";
 import { getCollectibles } from "../api/actions/collectibleActions";
-import Header from "../components/Header/Header";
 import Banner from "../components/Banner/Banner";
 import CollectibleList from "../components/CollectibleList";
 import TopCollections from "../components/TopCollections";
@@ -25,7 +24,6 @@ export default class HomePage extends Component {
   render() {
     return (
       <div>
-        <Header />
         <Banner
           title="Collectibles"
           description="Verified NFT marketplace for music artists."

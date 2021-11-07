@@ -1,45 +1,53 @@
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router";
 import { getCollectibles } from "../api/actions/collectibleActions";
 import { getCollection } from "../api/actions/collectionActions";
-import Header from "../components/Header/Header";
 import Banner from "../components/Banner/Banner";
 import CollectibleList from "../components/CollectibleList";
 
-export default class CollectiblesListPage extends Component {
-  state = { collectibles: [], title: "", bannerImage: "", description: "" };
+const CollectiblesListPage = () => {
+  const [collectibles, setCollectibles] = useState([]);
+  const [collection, setCollection] = useState({
+    title: "",
+    bannerImage: "",
+    description: "",
+  });
 
-  collectionSlug = "shiny-rappers";
+  const { slug: collectionSlug } = useParams();
 
-  async componentDidMount() {
-    const listOfCollectibles = await getCollectibles(this.collectionSlug);
+  const fetchData = async () => {
+    const listOfCollectibles = await getCollectibles(collectionSlug);
 
     console.log("fetched list of collectibles", listOfCollectibles);
 
     const { name, banner_image_url, description } = await getCollection(
-      this.collectionSlug
+      collectionSlug
     );
 
-    this.setState({
-      collectibles: listOfCollectibles,
+    setCollectibles(listOfCollectibles);
+    setCollection({
       title: name,
       bannerImage: banner_image_url,
       description: description,
     });
-  }
+  };
 
-  render() {
-    return (
-      <div>
-        <Header />
-        <Banner
-          title={this.state.title}
-          description={this.state.description}
-          bkgImage={this.state.bannerImage}
-        />
-        <main>
-          <CollectibleList collectibles={this.state.collectibles} />
-        </main>
-      </div>
-    );
-  }
-}
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  return (
+    <div>
+      <Banner
+        title={collection.title}
+        description={collection.description}
+        bkgImage={collection.bannerImage}
+      />
+      <main>
+        <CollectibleList collectibles={collectibles} />
+      </main>
+    </div>
+  );
+};
+
+export default CollectiblesListPage;

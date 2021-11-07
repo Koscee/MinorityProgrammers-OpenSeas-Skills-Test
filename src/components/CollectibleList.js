@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import SegmentWrapper from "./Segment/SegmentWrapper";
 import SegmentHead from "./Segment/SegmentHead";
 import { VerticalCard } from "./Card/Card";
@@ -9,24 +10,33 @@ class CollectibleList extends Component {
     const collectibles = this.props.collectibles;
 
     return collectibles.length === 0
-      ? "Loading..."
+      ? " "
       : collectibles.map((collectible) => {
           collectible = filterCollectibleData(collectible);
 
           console.log(collectible);
 
           return (
-            <VerticalCard
+            <Link
+              to={`/collectible/${collectible.address}/${collectible.token_id}`}
               key={collectible.id}
-              name={collectible.name}
-              avatarImage={collectible.image_url}
-              author={collectible.author}
-              price={"$" + collectible.current_price}
-              footerLTitle="Drops in"
-              footerLValue={collectible.expiration_time || "N/A"}
-              footerRTitle="Mint Amount"
-              footerRValue={collectible.num_sales}
-            />
+              onClick={() =>
+                window.location.href(
+                  `/collectible/${collectible.address}/${collectible.token_id}`
+                )
+              }
+            >
+              <VerticalCard
+                name={collectible.name}
+                avatarImage={collectible.image_url}
+                author={collectible.author}
+                price={"$" + collectible.current_price}
+                footerLTitle="Drops in"
+                footerLValue={collectible.expiration_time || "N/A"}
+                footerRTitle="Mint Amount"
+                footerRValue={collectible.num_sales}
+              />
+            </Link>
           );
         });
   };
@@ -34,7 +44,7 @@ class CollectibleList extends Component {
   render() {
     return (
       <SegmentWrapper>
-        <SegmentHead title="Collectibles" />
+        <SegmentHead title={this.props.segmentTitle || "Collectibles"} />
         <hr />
         <div className="segment-content">{this.renderCollectibleCards()}</div>
       </SegmentWrapper>

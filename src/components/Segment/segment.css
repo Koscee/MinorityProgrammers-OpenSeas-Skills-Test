@@ -22,11 +22,12 @@
 
 .segment-head-button {
   background-color: rgb(255, 255, 255);
-  color: rgb(5, 204, 155);
-  width: 60px;
+  color: rgb(1, 136, 102);
+  /* width: 70px; */
   padding: 6px 8px;
   border-radius: 30px;
   cursor: pointer;
+  font-weight: bold;
 }
 
 .segment-content {

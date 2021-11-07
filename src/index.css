@@ -23,3 +23,8 @@ hr {
   margin: 4px 0;
   border: 0.1px solid rgb(126, 126, 126);
 }
+
+a {
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+}

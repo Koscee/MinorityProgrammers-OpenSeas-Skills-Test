@@ -30,9 +30,9 @@
 }
 
 .vertical-card-avatar-box .price {
-  background-color: rgb(5, 204, 155);
+  background-color: rgb(0, 170, 128);
   color: white;
-  font-size: 14px;
+  font-size: 15px;
   padding: 3px;
   position: absolute;
   bottom: -10px;

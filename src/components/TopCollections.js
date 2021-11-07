@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import SegmentWrapper from "./Segment/SegmentWrapper";
 import SegmentHead from "./Segment/SegmentHead";
 import { HorizontalCard } from "./Card/Card";
@@ -9,15 +10,16 @@ export default class TopCollections extends Component {
       ? "Loading..."
       : this.props.topCollections.map((collection) => {
           return (
-            <HorizontalCard
-              key={collection.slug}
-              name={collection.name}
-              avatarImage={collection.image_url}
-              footerLTitle="Floor Price"
-              footerLValue={"$" + collection.floor_price.toFixed(2)}
-              footerRTitle="Volume"
-              footerRValue={"$" + collection.total_volume.toFixed(2)}
-            />
+            <Link to={`/collection/${collection.slug}`} key={collection.slug}>
+              <HorizontalCard
+                name={collection.name}
+                avatarImage={collection.image_url}
+                footerLTitle="Floor Price"
+                footerLValue={"$" + collection.floor_price.toFixed(2)}
+                footerRTitle="Volume"
+                footerRValue={"$" + collection.total_volume.toFixed(2)}
+              />
+            </Link>
           );
         });
   };

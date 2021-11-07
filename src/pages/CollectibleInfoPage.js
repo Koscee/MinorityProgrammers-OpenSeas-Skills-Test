@@ -1,7 +1,7 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import Banner from "../components/Banner/Banner";
 import CollectibleDetail from "../components/CollectibleDetail";
-import Header from "../components/Header/Header";
 import SegmentWrapper from "../components/Segment/SegmentWrapper";
 import CollectibleList from "../components/CollectibleList";
 import {
@@ -10,54 +10,53 @@ import {
 } from "../api/actions/collectibleActions";
 import { filterCollectibleData } from "../components/filterCollectibleData";
 
-export default class CollectibleInfoPage extends Component {
-  state = { collectibleInfo: {}, collectibles: [] };
+const CollectibleInfoPage = () => {
+  const [collectibleInfo, setCollectibleInfo] = useState({});
+  const [collectibles, setCollectibles] = useState([]);
 
-  asset = {
-    address: "0xc2d6b32e533e7a8da404abb13790a5a2f606ad75",
-    tokenId: "53",
-  };
+  const { assetAddress, tokenId } = useParams();
 
-  collectionSlug = "shiny-rappers";
+  const collectionSlug = "shiny-rappers";
 
-  async componentDidMount() {
-    let collectibleDetail = await getCollectible(
-      this.asset.address,
-      this.asset.tokenId
-    );
+  const fetchData = async () => {
+    let collectibleDetail = await getCollectible(assetAddress, tokenId);
     collectibleDetail = filterCollectibleData(collectibleDetail);
     console.log(collectibleDetail);
 
     const listOfCollectibles = await getCollectibles(collectibleDetail.slug);
     console.log("fetched list of collectibles", listOfCollectibles);
 
-    this.setState({
-      collectibleInfo: collectibleDetail,
-      collectibles: listOfCollectibles,
-    });
-  }
+    setCollectibleInfo(collectibleDetail);
+    setCollectibles(listOfCollectibles);
+  };
 
-  render() {
-    return (
-      <div>
-        <Header />
-        <Banner
-          title={this.state.collectibleInfo.name}
-          description={this.state.collectibleInfo.collection_name}
-          bkgImage={this.state.collectibleInfo.image_url}
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  return (
+    <div>
+      <Banner
+        title={collectibleInfo.name}
+        description={collectibleInfo.collection_name}
+        bkgImage={collectibleInfo.image_url}
+      />
+      <main>
+        <SegmentWrapper>
+          {JSON.stringify(collectibleInfo) === "{}" ? (
+            "Loading Details..."
+          ) : (
+            <CollectibleDetail dataInfo={collectibleInfo} />
+          )}
+        </SegmentWrapper>
+
+        <CollectibleList
+          segmentTitle={`From ${collectibleInfo.collection_name} Collection`}
+          collectibles={collectibles}
         />
-        <main>
-          <SegmentWrapper>
-            {JSON.stringify(this.state.collectibleInfo) === "{}" ? (
-              "Loading Details..."
-            ) : (
-              <CollectibleDetail dataInfo={this.state.collectibleInfo} />
-            )}
-          </SegmentWrapper>
+      </main>
+    </div>
+  );
+};
 
-          <CollectibleList collectibles={this.state.collectibles} />
-        </main>
-      </div>
-    );
-  }
-}
+export default CollectibleInfoPage;
