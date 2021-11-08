@@ -11,48 +11,56 @@ import {
 import { filterCollectibleData } from "../components/filterCollectibleData";
 
 const CollectibleInfoPage = () => {
-  const [collectibleInfo, setCollectibleInfo] = useState({});
-  const [collectibles, setCollectibles] = useState([]);
+  const params = useParams();
+  // console.log(params.tokenId);
 
-  const { assetAddress, tokenId } = useParams();
-
-  const collectionSlug = "shiny-rappers";
+  const [pageInfo, setPageInfo] = useState({
+    collectible: {},
+    collectibles: [],
+  });
 
   const fetchData = async () => {
+    const { assetAddress, tokenId } = params;
     let collectibleDetail = await getCollectible(assetAddress, tokenId);
     collectibleDetail = filterCollectibleData(collectibleDetail);
-    console.log(collectibleDetail);
+    // console.log(collectibleDetail);
 
     const listOfCollectibles = await getCollectibles(collectibleDetail.slug);
     console.log("fetched list of collectibles", listOfCollectibles);
 
-    setCollectibleInfo(collectibleDetail);
-    setCollectibles(listOfCollectibles);
+    setPageInfo({
+      collectible: collectibleDetail,
+      collectibles: listOfCollectibles,
+    });
   };
 
   useEffect(() => {
-    fetchData();
-  }, []);
+    fetchData().then(() => {
+      window.scrollTo({ top: 0, behavior: "auto" });
+    });
+  }, [params.tokenId]);
 
   return (
     <div>
       <Banner
-        title={collectibleInfo.name}
-        description={collectibleInfo.collection_name}
-        bkgImage={collectibleInfo.image_url}
+        title={pageInfo.collectible.name}
+        description={pageInfo.collectible.collection_name}
+        bkgImage={pageInfo.collectible.image_url}
       />
       <main>
         <SegmentWrapper>
-          {JSON.stringify(collectibleInfo) === "{}" ? (
+          {JSON.stringify(pageInfo.collectible) === "{}" ? (
             "Loading Details..."
           ) : (
-            <CollectibleDetail dataInfo={collectibleInfo} />
+            <CollectibleDetail dataInfo={pageInfo.collectible} />
           )}
         </SegmentWrapper>
 
         <CollectibleList
-          segmentTitle={`From ${collectibleInfo.collection_name} Collection`}
-          collectibles={collectibles}
+          segmentTitle={`From ${
+            pageInfo.collectible.collection_name || "..."
+          } Collection`}
+          collectibles={pageInfo.collectibles}
         />
       </main>
     </div>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useParams } from "react-router-dom";
 import { getCollectibles } from "../api/actions/collectibleActions";
 import { getCollection } from "../api/actions/collectionActions";
 import Banner from "../components/Banner/Banner";

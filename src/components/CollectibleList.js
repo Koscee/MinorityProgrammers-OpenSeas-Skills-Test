@@ -14,18 +14,12 @@ class CollectibleList extends Component {
       : collectibles.map((collectible) => {
           collectible = filterCollectibleData(collectible);
 
-          console.log(collectible);
+          const href = `/collectible/${collectible.address}/${collectible.token_id}`;
+
+          // console.log(collectible);
 
           return (
-            <Link
-              to={`/collectible/${collectible.address}/${collectible.token_id}`}
-              key={collectible.id}
-              onClick={() =>
-                window.location.href(
-                  `/collectible/${collectible.address}/${collectible.token_id}`
-                )
-              }
-            >
+            <Link to={href} key={collectible.id}>
               <VerticalCard
                 name={collectible.name}
                 avatarImage={collectible.image_url}

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./header.css";
 
 class Header extends React.Component {
@@ -6,7 +7,9 @@ class Header extends React.Component {
     return (
       <header>
         <div className="logo">
-          <img src="images/logo.png" alt="MusiSWAP logo" />
+          <Link to="/">
+            <img src="images/logo.png" alt="MusiSWAP logo" />
+          </Link>
         </div>
       </header>
     );
