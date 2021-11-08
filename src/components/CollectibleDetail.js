@@ -2,10 +2,12 @@ import React, { Component } from "react";
 import BiddingForm from "./BiddingForm";
 import DetailItem from "./DetailItem";
 import "./collectionDetail.css";
+import TimerCountDown from "./TimerCountDown";
 
 export default class CollectibleDetail extends Component {
   render() {
     const collectible = this.props.dataInfo;
+    console.log(this.props.dataInfo);
     return (
       <div className="info-container">
         <div className="info-left-box">
@@ -49,9 +51,13 @@ export default class CollectibleDetail extends Component {
 
             <div className="bidding-info-right">
               <p className="bid-end-text">Bid Ends in</p>
-              <span className="bid-end-date">
-                {collectible.closing_date || "N/A"}
-              </span>
+              {!collectible.closing_date ? (
+                "N/A"
+              ) : (
+                <span className="bid-end-date">
+                  <TimerCountDown endDate={collectible.closing_date} />
+                </span>
+              )}
             </div>
           </div>
 

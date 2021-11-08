@@ -4,6 +4,7 @@ import SegmentWrapper from "./Segment/SegmentWrapper";
 import SegmentHead from "./Segment/SegmentHead";
 import { VerticalCard } from "./Card/Card";
 import { filterCollectibleData } from "./filterCollectibleData";
+import TimerCountDown from "./TimerCountDown";
 
 class CollectibleList extends Component {
   renderCollectibleCards = () => {
@@ -26,7 +27,13 @@ class CollectibleList extends Component {
                 author={collectible.author}
                 price={"$" + collectible.current_price}
                 footerLTitle="Drops in"
-                footerLValue={collectible.expiration_time || "N/A"}
+                footerLValue={
+                  !collectible.closing_date ? (
+                    "N/A"
+                  ) : (
+                    <TimerCountDown endDate={collectible.closing_date} />
+                  )
+                }
                 footerRTitle="Mint Amount"
                 footerRValue={collectible.num_sales}
               />
