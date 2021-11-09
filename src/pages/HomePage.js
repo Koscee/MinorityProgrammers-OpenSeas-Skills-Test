@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { getTopCollections } from "../api/actions/collectionActions";
 import { getCollectibles } from "../api/actions/collectibleActions";
 import Banner from "../components/Banner/Banner";
+import bannerImage from "../banner.jpg";
 import CollectibleList from "../components/CollectibleList";
 import TopCollections from "../components/TopCollections";
 
@@ -27,7 +28,7 @@ export default class HomePage extends Component {
         <Banner
           title="Collectibles"
           description="Verified NFT marketplace for music artists."
-          bkgImage="images/banner.jpg"
+          bkgImage={bannerImage}
         />
         <main>
           <TopCollections topCollections={this.state.topCollectionsData} />
