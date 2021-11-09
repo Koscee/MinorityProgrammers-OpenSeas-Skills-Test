@@ -1,20 +1,21 @@
 {
   "files": {
     "main.css": "/MinorityProgrammers-OpenSeas-Skills-Test/static/css/main.56898549.chunk.css",
-    "main.js": "/MinorityProgrammers-OpenSeas-Skills-Test/static/js/main.1949d583.chunk.js",
-    "main.js.map": "/MinorityProgrammers-OpenSeas-Skills-Test/static/js/main.1949d583.chunk.js.map",
+    "main.js": "/MinorityProgrammers-OpenSeas-Skills-Test/static/js/main.22e17861.chunk.js",
+    "main.js.map": "/MinorityProgrammers-OpenSeas-Skills-Test/static/js/main.22e17861.chunk.js.map",
     "runtime-main.js": "/MinorityProgrammers-OpenSeas-Skills-Test/static/js/runtime-main.c9bd693f.js",
     "runtime-main.js.map": "/MinorityProgrammers-OpenSeas-Skills-Test/static/js/runtime-main.c9bd693f.js.map",
     "static/js/2.03918561.chunk.js": "/MinorityProgrammers-OpenSeas-Skills-Test/static/js/2.03918561.chunk.js",
     "static/js/2.03918561.chunk.js.map": "/MinorityProgrammers-OpenSeas-Skills-Test/static/js/2.03918561.chunk.js.map",
     "index.html": "/MinorityProgrammers-OpenSeas-Skills-Test/index.html",
     "static/css/main.56898549.chunk.css.map": "/MinorityProgrammers-OpenSeas-Skills-Test/static/css/main.56898549.chunk.css.map",
-    "static/js/2.03918561.chunk.js.LICENSE.txt": "/MinorityProgrammers-OpenSeas-Skills-Test/static/js/2.03918561.chunk.js.LICENSE.txt"
+    "static/js/2.03918561.chunk.js.LICENSE.txt": "/MinorityProgrammers-OpenSeas-Skills-Test/static/js/2.03918561.chunk.js.LICENSE.txt",
+    "static/media/banner.8106cd1c.jpg": "/MinorityProgrammers-OpenSeas-Skills-Test/static/media/banner.8106cd1c.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.c9bd693f.js",
     "static/js/2.03918561.chunk.js",
     "static/css/main.56898549.chunk.css",
-    "static/js/main.1949d583.chunk.js"
+    "static/js/main.22e17861.chunk.js"
   ]
 }
