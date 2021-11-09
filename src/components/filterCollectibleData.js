@@ -1,5 +1,11 @@
 export const filterCollectibleData = (collectible) => {
   const ETH_DECIMAL = Math.pow(10, 18);
+  let order = {
+    base_price: 0,
+    current_price: 0,
+    expiration_time: null,
+    closing_date: null,
+  };
 
   let {
     id,
@@ -19,24 +25,21 @@ export const filterCollectibleData = (collectible) => {
 
   if (sell_orders === null) {
     if (orders === undefined || orders[0] === undefined) {
-      const defaultOrders = [
-        {
-          base_price: 0,
-          current_price: 0,
-          expiration_time: null,
-          closing_date: null,
-        },
-      ];
-      var { base_price, current_price, expiration_time, closing_date } =
-        defaultOrders[0];
+      orders = [order];
     } else {
-      var { base_price, current_price, expiration_time, closing_date } =
-        orders[0];
+      order.base_price = orders[0].base_price;
+      order.current_price = orders[0].current_price;
+      order.expiration_time = orders[0].expiration_time;
+      order.closing_date = orders[0].closing_date;
     }
   } else {
-    var { base_price, current_price, expiration_time, closing_date } =
-      sell_orders[0];
+    order.base_price = sell_orders[0].base_price;
+    order.current_price = sell_orders[0].current_price;
+    order.expiration_time = sell_orders[0].expiration_time;
+    order.closing_date = sell_orders[0].closing_date;
   }
+
+  const { base_price, current_price, expiration_time, closing_date } = order;
 
   return {
     id,

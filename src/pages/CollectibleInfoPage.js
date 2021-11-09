@@ -11,7 +11,8 @@ import {
 import { filterCollectibleData } from "../components/filterCollectibleData";
 
 const CollectibleInfoPage = () => {
-  const params = useParams();
+  const { assetAddress, tokenId } = useParams();
+
   // console.log(params.tokenId);
 
   const [pageInfo, setPageInfo] = useState({
@@ -20,7 +21,6 @@ const CollectibleInfoPage = () => {
   });
 
   const fetchData = async () => {
-    const { assetAddress, tokenId } = params;
     let collectibleDetail = await getCollectible(assetAddress, tokenId);
     collectibleDetail = filterCollectibleData(collectibleDetail);
     // console.log(collectibleDetail);
@@ -38,7 +38,7 @@ const CollectibleInfoPage = () => {
     fetchData().then(() => {
       window.scrollTo({ top: 0, behavior: "auto" });
     });
-  }, [params.tokenId]);
+  }, [tokenId]);
 
   return (
     <div>

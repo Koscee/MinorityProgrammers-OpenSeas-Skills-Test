@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import logo from "../../logo.png";
 import "./header.css";
 
 class Header extends React.Component {
@@ -8,7 +9,7 @@ class Header extends React.Component {
       <header>
         <div className="logo">
           <Link to="/">
-            <img src="images/logo.png" alt="MusiSWAP logo" />
+            <img src={logo} alt="MusiSWAP logo" />
           </Link>
         </div>
       </header>
